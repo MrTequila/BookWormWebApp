@@ -1,0 +1,25 @@
+{% extends 'Bookeep/base.html' %}
+{% load static %}
+{% block body_block %}
+{% if book_list %}
+    {% for book in book_list %}
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+
+        <h2 class="featurette-heading"> {{ book.title }} </h2>
+        Author: {{ book.author }} <br/>
+        Pages: {{ book.pages }} <br/>
+        Started reading: {{ book.start_date }} <br/>
+        Finished reading: {{ book.finish_date }} <br/>
+        Reading time: {{ book.time_read.days }} days<br/>
+        User: {{ book.user }}
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img class="featurette-image img-responsive center-block" src="{% static 'Bookeep/img/Books-cover-not-available.png' %}">
+        </div>
+    </div>
+      <hr class="featurette-divider">
+    {% endfor %}
+    {% endif %}
+    <img src="{% static 'Bookeep/img/foo.png' %}"/>
+{% endblock %}
