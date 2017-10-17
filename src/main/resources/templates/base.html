@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Spring Boot - POST-GET AJAX Example</title>
   <meta charset="utf-8" />
@@ -41,28 +41,31 @@
 
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-          </ul>
-        </div>
-        </div>
+
         </div>
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron">
-    <!--    	{% block body_block %}
-            {% endblock %} -->
+
+            <div class="row featurette" th:each="book : ${books}">
+                <div class="col-md-7 col-md-push-5">
+
+                <h2 class="featurette-heading" th:text="${{book.title}}">  </h2>
+                  Author: <p th:text="${{book.author}}">Author</p><br/>
+                Pages: <p th:text="${{book.pageNumber}}"> Pages</p><br/>
+                Started reading: <p th:text="${{book.startDate}}"> Started</p><br/>
+                Finished reading: <p th:text="${{book.finishDate}}"> Finished</p><br/>
+                </div>
+                <div class="col-md-5 col-md-pull-7">
+                 <!--   <img class="featurette-image img-responsive center-block" src=""> -->
+                </div>
+            </div>
+             <!-- <hr class="featurette-divider">-->
     	</div>
 	</div>
 
 	<footer class="footer">
     	<div class="container">
-        	<p class="text-mutted"> Page created by Michał Jagiellicz. &copy;2016 </p>
+        	<p class="text-mutted"> Page created by Michał Jagiellicz. &copy;2017 </p>
       	</div>
 	</footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
