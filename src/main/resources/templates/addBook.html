@@ -55,20 +55,18 @@
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron">
 
-            <div class="row featurette" th:each="book : ${books}">
-                <div class="col-md-7 col-md-push-5">
-
-                <h2 class="featurette-heading" th:text="${{book.title}}">  </h2>
-                  Author: <span th:text="${{book.author}}">Author</span><br/>
-                Pages: <span th:text="${{book.pageNumber}}"> Pages</span><br/>
-                Started reading: <span th:text="${{book.startDate}}"> Started</span><br/>
-                Finished reading: <span th:text="${{book.finishDate}}"> Finished</span><br/>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <div class="col-md-5 col-md-pull-7">
-                    <img class="featurette-image img-responsive center-block" th:src="@{/img/Books-cover-not-available.png}"/>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
                 </div>
-
-            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 
     	</div>
 	</div>
