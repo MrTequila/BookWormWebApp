@@ -33,7 +33,6 @@ public class BaseController {
         List<Book> books = new ArrayList<>();
         for (Book book : bookRepository.findAll()){
             books.add(book);
-            System.out.println(book.toString());
         }
         model.addAttribute("books", books);
 
