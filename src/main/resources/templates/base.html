@@ -14,34 +14,37 @@
   <body>
 
     <!-- Fixed Upper navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Book Worm</a>
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            <div id="navbar" class="navbar-collapse collapse">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/">Home</a>
-                <a class="nav-item nav-link" href="/addBook">Add Book</a>
-                <a class="nav-item nav-link" href="#contact">Contact</a>
-              </div>
-            </div><!--/.nav-collapse -->
+    <header class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book Worm</a>
+        <div class="navbar-nav-scroll">
+
+                <div id="navbar" class="navbar-nav bd-navbar-nav flex-row">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/addBook">Add Book</a>
+                    <a class="nav-item nav-link" href="#contact">Contact</a>
+                  </div>
+                </div>
         </div>
-    </nav>
+        <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <a class="nav-item nav-link" href="#">Log in</a>
+            <a class="nav-item nav-link" href="#">Register</a>
+        </div>
+    </header>
 
 	<main role="main" class="container">
-		<div class="jumbotron">
+		<div class="jumbotron mt-5">
+            <h1 class="display-3 text-center">List of Books</h1>
             <ul class="list-unstyled">
-                <li class="media m-3" th:each="book : ${books}">
+                <li class="media m-3 border border-primary rounded" th:each="book : ${books}">
                     <img class="mr-3" th:src="@{/img/Books-cover-not-available.png}"/>
                     <div class="media-body">
 
-                        <h2 class="card-title" th:text="${{book.title}}">  </h2>
-                        Author: <span th:text="${{book.author}}">Author</span><br/>
-                        Pages: <span th:text="${{book.pageNumber}}"> Pages</span><br/>
-                        Started reading: <span th:text="${{book.startDate}}"> Started</span><br/>
-                        Finished reading: <span th:text="${{book.finishDate}}"> Finished</span><br/>
+                        <h2 class="mt-0" th:text="${{book.title}}">  </h2>
+                        <span class="font-weight-bold">Author:</span> <span th:text="${{book.author}}">Author</span><br/>
+                        <span class="font-weight-bold">Pages:</span> <span th:text="${{book.pageNumber}}"> Pages</span><br/>
+                        <span class="font-weight-bold">Started reading:</span> <span th:text="${{book.startDate}}"> Started</span><br/>
+                        <span class="font-weight-bold">Finished reading:</span> <span th:text="${{book.finishDate}}"> Finished</span><br/>
                     </div>
                 </li>
             </ul>
