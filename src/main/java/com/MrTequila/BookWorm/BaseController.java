@@ -36,6 +36,7 @@ public class BaseController {
         }
         model.addAttribute("books", books);
 
+
         return "base";
     }
 

@@ -1,9 +1,8 @@
 package com.MrTequila.BookWorm;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Required;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -12,6 +11,10 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String author;
     private String title;
@@ -79,6 +82,14 @@ public class Book {
         this.pageNumber = pageNumber;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -88,6 +99,7 @@ public class Book {
                 ", startDate='" + startDate + '\'' +
                 ", finishDate='" + finishDate + '\'' +
                 ", pageNumber=" + pageNumber +
+                ", user_id=" + user.getId() +
                 '}';
     }
 }

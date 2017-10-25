@@ -1,22 +1,27 @@
 package com.MrTequila.BookWorm;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name="user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Book> books;
+
     private String username;
     private String password;
     private String email;
+
+    public User(){
+
+    }
 
 
     public User(String username, String password, String email) {
@@ -49,6 +54,13 @@ public class User {
         return email;
     }
 
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
 
     @Override
     public String toString() {
