@@ -38,6 +38,10 @@ public class User {
         this.email = email;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Spring Boot - POST-GET AJAX Example</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        <!-- Custom styles for this template -->
+        <link th:href="@{/css/theme.css}" rel="stylesheet"/>
+
+    </head>
+
+  <body>
+
+    <!-- Fixed Upper navbar -->
+    <header class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Book Worm</a>
+        <div class="navbar-nav-scroll">
+
+            <div id="navbar" class="navbar-nav bd-navbar-nav flex-row">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/addBook">Add Book</a>
+                    <a class="nav-item nav-link" href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <a class="nav-item nav-link" href="#">Log in</a>
+            <a class="nav-item nav-link active" href="/registerUser">Register</a>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+
+        </div>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+
+            <form action="#" th:action="@{/registerUser}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" th:field="*{username}" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username"/>
+                    <label for="password">Password</label>
+                    <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Enter password"/>
+                    <label for="email">Password</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter email address"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+    	</div>
+	</div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-mutted"> Page created by Michał Jagiellicz. &copy;2017 </p>
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="{% static 'Bookeep/js/bootstrap.min.js' %}"></script> -->
+  </body>
+ </html>
