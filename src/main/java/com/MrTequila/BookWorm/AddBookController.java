@@ -1,5 +1,6 @@
 package com.MrTequila.BookWorm;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ public class AddBookController {
     @Autowired
     UserRepository userRepository;
 
+
     @GetMapping("/addBook")
     public String addBook(Model model){
         model.addAttribute("book", new Book());
@@ -26,6 +28,7 @@ public class AddBookController {
             users.add(user);
         }
         model.addAttribute("users", users);
+
         return "addBook";
     }
 

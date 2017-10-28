@@ -13,7 +13,7 @@ public class Book {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_username")
     private User user;
 
     private String author;
@@ -99,7 +99,7 @@ public class Book {
                 ", startDate='" + startDate + '\'' +
                 ", finishDate='" + finishDate + '\'' +
                 ", pageNumber=" + pageNumber +
-                ", user_id=" + user.getId() +
+                ", user_username=" + user.getUsername() +
                 '}';
     }
 }

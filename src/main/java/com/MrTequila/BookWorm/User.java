@@ -8,14 +8,12 @@ import java.util.Set;
 @Table(name="user")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Book> books;
 
+    @Id
     private String username;
+
     private String password;
     private String email;
 
@@ -42,9 +40,6 @@ public class User {
         this.username = username;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
@@ -69,7 +64,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 '}';
