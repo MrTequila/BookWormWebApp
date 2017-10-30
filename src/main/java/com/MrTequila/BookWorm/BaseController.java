@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +34,14 @@ public class BaseController {
     }
     @RequestMapping("/")
     public String base(Model model) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest servletRequest = attributes.getRequest();
+        String username = servletRequest.getRemoteUser();
         List<Book> books = new ArrayList<>();
         for (Book book : bookRepository.findAll()){
-            books.add(book);
+            if(book.getUser().getUsername().equals(username)) {
+                books.add(book);
+            }
         }
         model.addAttribute("books", books);
 

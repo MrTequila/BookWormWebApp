@@ -1,14 +1,15 @@
 package com.MrTequila.BookWorm;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
@@ -34,6 +35,14 @@ public class AddBookController {
 
     @PostMapping("/addBook")
     public String bookSubmit(@ModelAttribute Book book){
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest servletRequest = attributes.getRequest();
+        String username = servletRequest.getRemoteUser();
+        for (User user : userRepository.findAll()) {
+            if (user.getUsername().equals(username)) {
+                book.setUser(user);
+            }
+        }
         bookRepository.save(book);
         return "redirect:/";
     }

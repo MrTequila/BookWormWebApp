@@ -10,9 +10,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER");
+        for (User user: userRepository.findAll()) {
+            auth.inMemoryAuthentication()
+                    .withUser(user.getUsername()).password(user.getPassword()).roles("USER");
+        }
+
     }
 
     @Override
@@ -24,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                     .and()
                 .formLogin()
                     .loginPage("/login")
+                    .successForwardUrl("/")
                     .permitAll()
                     .and()
                 .logout()
