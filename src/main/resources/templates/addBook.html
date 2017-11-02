@@ -29,7 +29,7 @@
         </div>
         <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <span class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-                Hello <span th:text="${#httpServletRequest.remoteUser}">usr</span>
+                Hello <span class="nav-item" th:text="${#httpServletRequest.remoteUser}">usr</span>
                 <a class="nav-item nav-link" href="#">Log out</a>
             </span>
             <span th:if="${#authorization.expression('!isAuthenticated()')}">
@@ -46,7 +46,7 @@
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron">
 
-            <form action="#" th:action="@{/addBook}" th:object="${book}" method="post">
+            <form action="#" th:action="@{/addBook}" th:object="${book}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Book Title</label>
                     <input type="text" th:field="*{title}" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter book title"/>
@@ -61,6 +61,10 @@
                     <label for="pageNumber">Number of pages</label>
                     <input type="number" th:field="*{pageNumber}" class="form-control" id="pageNumber" placeholder="Enter number of pages"/>
                 </div>
+                <label class="custom-file">
+                    <input type="file" name="file" class="custom-file-input"/>
+                    <span class="custom-file-control"></span>
+                </label>
                 <!--<div class="form-group">
                     <label for="user">User</label>
                     <input type="text" th:field="*{user}" class="form-control" id="user" placeholder="Enter user name"/>
